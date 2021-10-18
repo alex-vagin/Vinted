@@ -15,8 +15,8 @@ public class RuleDiscountCorrection implements BiFunction<Double, ShipmentData, 
 			return discount;
 		}
 		
-		if (shipmentData.getDate().getMonthValue() != monthOfDiscount) {
-			monthOfDiscount = shipmentData.getDate().getMonthValue();
+		if (shipmentData.date().getMonthValue() != monthOfDiscount) {
+			monthOfDiscount = shipmentData.date().getMonthValue();
 			discountGiven = 0;
 		}
 		

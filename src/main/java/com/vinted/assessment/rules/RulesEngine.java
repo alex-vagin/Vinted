@@ -1,5 +1,6 @@
 package com.vinted.assessment.rules;
 
+import com.vinted.assessment.Factory;
 import com.vinted.assessment.model.ShipmentData;
 import com.vinted.assessment.model.ShipmentOutput;
 
@@ -12,16 +13,12 @@ public class RulesEngine  {
 	private final RuleDiscountCorrection discountCorrection = new RuleDiscountCorrection();
 	
 	public ShipmentOutput calculateDiscount(ShipmentData shipmentData) {
-		if (shipmentData.getInput() != null) {
-			return ShipmentOutput.of(shipmentData, Double.NaN);
-		}
-		
 		Double discount = rules.stream().map(f -> f.apply(shipmentData)).reduce(0.0, Double::sum);
 		
 		if (discount > 0 ) {
 			discount = discountCorrection.apply(discount, shipmentData);
 		}
 		
-		return ShipmentOutput.of(shipmentData, discount);
+		return Factory.createShipmentOutput(shipmentData, discount);
 	}
 }
