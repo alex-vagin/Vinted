@@ -9,8 +9,7 @@ The core functionality is concentrated in RuleEngine class. Each ShipmentData DT
 
 Each function class has own state which allows to calculate discounts not only in dependce of ShipmentData DTO but also with other information - record number, number of discounts in a month and so on.
 This approach allows isolate rule state and functionality in own class instances and give as flixibility to change and add toher rules without influence on other rules
-
-This variant is commited in main branch and implements the task as simple as possible.
+Each function is added to fields of RulesEngine class. In Spring or Java EE environment it could be done automatically when each function class marked with some special annotation @BusinessRule, for example. In current implementation nevertheless it also possible automatically link function to RuleEngine via reflections for example, but it's excessive.
 
 * Build tool - maven
 * Used Java version - 1.8
@@ -19,4 +18,9 @@ This variant is commited in main branch and implements the task as simple as pos
 **mvn exec:java -mvn exec:java -Dexec.mainClass="com.vinted.assessment.VintedApplication" -Dexec.args="src/test/resources/input.txt"**
 
 Or change directory to /target and run: **java -jar vinted-1.0-SNAPSHOT.jar ../src/test/resources/input.txt**
+
+This variant is commited in main branch and implements the task as simple as possible.  
+
+---
+
 
