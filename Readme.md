@@ -19,8 +19,14 @@ Each function is added to fields of RulesEngine class. In Spring or Java EE envi
 
 Or change directory to /target and run: **java -jar vinted-1.0-SNAPSHOT.jar ../src/test/resources/input.txt**
 
-This variant is commited in main branch and implements the task as simple as possible.  
+This variant is commited in main branch and implements the task as simple as possible.
 
----
+This kind of task often happens in production.
+Further possible improvements:
+1. Create services for:
+    1. Input loading to load from other formats (JSON, XML) and other transport (JMS, HTTP)
+    2. The same for output - services for different transports with pluggable converters to other formats
+    3. Retrieving and caching tariffs from the persistence layer
+2. To implement the handling process in a reactive manner.
 
 
