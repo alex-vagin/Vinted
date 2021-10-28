@@ -5,6 +5,9 @@ import com.vinted.assessment.model.ShipmentOutput;
 import com.vinted.assessment.services.implementation.ITariffImpl;
 import com.vinted.assessment.services.interfaces.ITariff;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Locale;
@@ -44,5 +47,9 @@ public class Factory {
 	
 	public static ITariff getTariff() {
 		return ITariffImpl.getInstance();
+	}
+	
+	public static InputStream getInputStream(String path) throws FileNotFoundException {
+		return new FileInputStream(path);
 	}
 }
